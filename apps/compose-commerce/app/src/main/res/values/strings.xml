@@ -1,0 +1,16 @@
+<resources>
+    <string name="placeholder_product_detail_page">Hello product detail screen! (name=%s)</string>
+    <string name="price_format">$%.2f</string>
+    <string name="icon_shopping_cart_content_description">Shopping Cart</string>
+    <string name="icon_sign_out_content_description">Sign out</string>
+    <string name="logo_content_description">Logo</string>
+    <string name="back">Back</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="checkout_now">Quick checkout</string>
+    <string name="cart_title">Shopping cart</string>
+    <string name="cart_line_item_photo_content_description">Photo for %s</string>
+    <string name="remove">Remove</string>
+    <string name="cart_empty">Your shopping cart is empty</string>
+    <string name="out_of_stock">This product is out of stock.</string>
+    <string name="cancel">Cancel</string>
+</resources>

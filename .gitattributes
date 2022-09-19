@@ -1,0 +1,2 @@
+apps/compose-commerce/api/bigcommerce-models-carts-v3/src/main/kotlin/dev/petedoyle/commerce/common/api/bigcommerce/carts/v3/model/*.kt linguist-generated=true
+apps/compose-commerce/api/bigcommerce-models-catalog-v3/src/main/kotlin/dev/petedoyle/commerce/common/api/bigcommerce/catalog/v3/model/*.kt linguist-generated=true

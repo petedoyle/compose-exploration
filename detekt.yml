@@ -1,0 +1,20 @@
+comments:
+  active: false
+
+complexity:
+  active: false
+
+naming:
+  active: false
+
+style:
+  active: false
+
+empty-blocks:
+  active: true
+  EmptyFunctionBlock:
+    active: false
+
+potential-bugs:
+  LateinitUsage:
+    active: false

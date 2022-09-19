@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="bigcommerce_base_url">https://api.bigcommerce.com/stores/c22nuunnpp/</string>
+    <string name="bigcommerce_access_token">tulxczgvog6xska925c4hm6yy1h7mu7</string>
+</resources>
