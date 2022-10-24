@@ -1,5 +1,6 @@
 [plugins]
 
+dependencyGuard = { id = "com.dropbox.dependency-guard", version.ref = "dependencyGuard" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 openapi-generator = { id = "org.openapi.generator", version.ref = "openapi-generator" }
@@ -31,6 +32,7 @@ androidx-test-ext-junit = "1.1.3"
 androidx-test-ext-truth = "1.4.0"
 coil = "2.2.2"
 dagger = "2.44"
+dependencyGuard = "0.3.2"
 detekt = "1.21.0"
 eithernet = "1.2.1"
 expect-kt = "1.0.1"

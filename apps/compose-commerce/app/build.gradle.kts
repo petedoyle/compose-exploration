@@ -3,6 +3,7 @@ plugins {
     id("kotlin-android")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
+    alias(libs.plugins.dependencyGuard)
 }
 
 android {
@@ -111,4 +112,8 @@ dependencies {
     androidTestImplementation(libs.expectKt)
     androidTestImplementation(libs.kotlinx.coroutines.test)
     androidTestImplementation(libs.mockk.android)
+}
+
+dependencyGuard {
+    configuration("releaseRuntimeClasspath")
 }
