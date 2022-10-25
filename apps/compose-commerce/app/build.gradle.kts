@@ -96,7 +96,7 @@ dependencies {
     testImplementation(libs.junit.junit)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.mockk)
-    testImplementation(testFixtures("com.slack.eithernet:eithernet:" + libs.versions.eithernet.get()))
+    testImplementation(testFixtures(libs.eithernet))
 
     androidTestImplementation(project(":common:test-android"))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
