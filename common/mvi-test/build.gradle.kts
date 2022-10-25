@@ -9,9 +9,11 @@ android {
     buildFeatures {
         // none required
     }
+    namespace = "dev.petedoyle.common.mvi.test"
 }
 
 dependencies {
-    implementation(project(":common:mvi"))
+    implementation(projects.common.mvi)
+
     implementation(libs.kotlinx.coroutines.core)
 }

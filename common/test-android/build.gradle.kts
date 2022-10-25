@@ -9,10 +9,12 @@ android {
     buildFeatures {
         // none needed
     }
+    namespace = "dev.petedoyle.common.test.android"
 }
 
 dependencies {
-    implementation(project(":common:coroutine-dispatchers"))
+    implementation(projects.common.coroutineDispatchers)
+
     implementation(libs.androidx.arch.core)
     implementation(libs.androidx.compose.ui.test.junit4)
     implementation(libs.androidx.test.core)

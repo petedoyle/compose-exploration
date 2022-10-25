@@ -12,6 +12,7 @@ android {
     buildFeatures {
         buildConfig = true
     }
+    namespace = "dev.petedoyle.commerce.common.api.bigcommerce"
 }
 
 dependencies {

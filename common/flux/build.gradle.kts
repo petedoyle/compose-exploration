@@ -9,10 +9,12 @@ android {
     buildFeatures {
         // none required
     }
+    namespace = "dev.petedoyle.common.flux"
 }
 
 dependencies {
-    implementation(project(":common:coroutine-dispatchers"))
+    implementation(projects.common.coroutineDispatchers)
+
     implementation(libs.androidx.annotation)
     implementation(libs.kotlinx.coroutines.core)
 

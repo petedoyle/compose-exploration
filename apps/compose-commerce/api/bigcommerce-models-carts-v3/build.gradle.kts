@@ -12,6 +12,7 @@ android {
     buildFeatures {
         // none needed
     }
+    namespace = "dev.petedoyle.commerce.common.api.bigcommerce.carts.v3"
 }
 
 openApiValidate {

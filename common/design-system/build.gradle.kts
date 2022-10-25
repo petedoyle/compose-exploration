@@ -19,6 +19,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.androidx.compose.compiler.get()
     }
+    namespace = "dev.petedoyle.commerce.design.compose"
 }
 
 dependencies {

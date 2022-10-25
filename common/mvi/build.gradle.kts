@@ -9,10 +9,12 @@ android {
     buildFeatures {
         // none required
     }
+    namespace = "dev.petedoyle.common.mvi"
 }
 
 dependencies {
-    implementation(project(":common:coroutine-dispatchers"))
+    implementation(projects.common.coroutineDispatchers)
+
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)

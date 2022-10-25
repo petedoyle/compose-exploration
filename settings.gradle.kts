@@ -15,12 +15,13 @@ dependencyResolutionManagement {
 }
 
 enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 plugins {
   id("de.fayard.refreshVersions") version "0.50.0"
 }
 
-rootProject.name = "Compose Playground"
+rootProject.name = "ComposePlayground"
 include(":apps:compose-commerce:app")
 include(":apps:compose-commerce:api:bigcommerce-models-carts-v3")
 include(":apps:compose-commerce:api:bigcommerce-models-catalog-v3")
