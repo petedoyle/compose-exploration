@@ -63,7 +63,7 @@ allprojects {
                         "disabled_rules" to "filename",
                         "ij_kotlin_allow_trailing_comma" to "true",
                         "ij_kotlin_allow_trailing_comma_on_call_site" to "true",
-                    )
+                    ),
                 )
             trimTrailingWhitespace()
             endWithNewline()
@@ -78,13 +78,13 @@ allprojects {
                         "disabled_rules" to "filename",
                         "ij_kotlin_allow_trailing_comma" to "true",
                         "ij_kotlin_allow_trailing_comma_on_call_site" to "true",
-                    )
+                    ),
                 )
             trimTrailingWhitespace()
             endWithNewline()
             licenseHeaderFile(
                 rootProject.file("spotless/copyright.kt"),
-                "(import|plugins|buildscript|dependencies|pluginManagement)"
+                "(import|plugins|buildscript|dependencies|pluginManagement)",
             )
         }
     }

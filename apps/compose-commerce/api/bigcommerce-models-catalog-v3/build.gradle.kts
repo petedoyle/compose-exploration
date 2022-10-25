@@ -25,7 +25,7 @@ openApiGenerate {
             "models" to "",
             "modelTests" to "false",
             "modelDocs" to "false",
-        )
+        ),
     )
     validateSpec.set(false)
     generatorName.set("kotlin")
@@ -40,7 +40,7 @@ openApiGenerate {
             "library" to "jvm-retrofit2",
             "moshiCodeGen" to "true",
             "useCoroutines" to "true",
-        )
+        ),
     )
 }
 
