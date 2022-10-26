@@ -23,6 +23,7 @@ android {
 }
 
 dependencies {
+    implementation(platform(libs.androidx.compose.bom))
     implementation(projects.common.coroutineDispatchers)
 
     implementation(libs.accompanist.placeholder.material)
