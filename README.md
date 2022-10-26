@@ -1,7 +1,11 @@
 [![Figma Design System](https://img.shields.io/badge/Figma-Design-pink.svg?style=for-the-badge&logo=figma)](https://www.figma.com/file/iJbFMd9ZzU2U9iQZ0nk72t/Fractal-Foundations)
 
-# Compose Playground
-A 🚧 work-in-progress 🚧 collection of sample apps and experiments utilizing Jetpack Compose.
+# About
+A place for ✨👨‍🔬 personal exploration 👩‍🔬✨ of best practices for Compose, design systems, testing, modularization, linting & enforcement of best practices, Gradle config, build speeds, CI, etc.
+
+I experiment here before subjecting teammates to the bleeding edge.
+
+This is a monorepo containing multiple apps, mainly to allow me to amortize the cost of project setup over multiple projects, in a way that I can easily maintain (Gradle, design systems, etc.)
 
 ## Sample apps
 - **Compose Movie Search** - (Module: `:apps:compose-movie-search:app`) A simple single-screen app that allows you to search / filter a list of movies. A small sample showing Unidirectional Data Flow (UDF) via MVI, including tests.
