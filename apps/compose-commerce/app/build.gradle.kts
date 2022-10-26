@@ -56,13 +56,14 @@ android {
 }
 
 dependencies {
-    implementation(project(":apps:compose-commerce:api:bigcommerce-client"))
-    implementation(project(":apps:compose-commerce:api:bigcommerce-models-carts-v3"))
-    implementation(project(":apps:compose-commerce:api:bigcommerce-models-catalog-v3"))
-    implementation(project(":common:coroutine-dispatchers"))
-    implementation(project(":common:flux"))
-    implementation(project(":common:mvi"))
-    implementation(project(":common:design-system"))
+    implementation(projects.apps.composeCommerce.api.bigcommerceClient)
+    implementation(projects.apps.composeCommerce.api.bigcommerceModelsCartsV3)
+    implementation(projects.apps.composeCommerce.api.bigcommerceModelsCatalogV3)
+    implementation(projects.common.coroutineDispatchers)
+    implementation(projects.common.designSystem)
+    implementation(projects.common.flux)
+    implementation(projects.common.mvi)
+
     implementation(libs.accompanist.navigation.animation)
     implementation(libs.accompanist.insets)
     implementation(libs.accompanist.insets.ui)
@@ -92,7 +93,7 @@ dependencies {
 
     debugImplementation(libs.androidx.compose.ui.tooling)
 
-    testImplementation(project(":common:test-unit"))
+    testImplementation(projects.common.testUnit)
     testImplementation(libs.cashapp.turbine)
     testImplementation(libs.expectKt)
     testImplementation(libs.junit.junit)
@@ -100,7 +101,7 @@ dependencies {
     testImplementation(libs.mockk)
     testImplementation(testFixtures(libs.eithernet))
 
-    androidTestImplementation(project(":common:test-android"))
+    androidTestImplementation(projects.common.testAndroid)
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     androidTestImplementation(libs.androidx.test.core)
     androidTestImplementation(libs.androidx.test.rules)

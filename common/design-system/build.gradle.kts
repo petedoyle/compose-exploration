@@ -23,7 +23,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":common:coroutine-dispatchers"))
+    implementation(projects.common.coroutineDispatchers)
+
     implementation(libs.accompanist.placeholder.material)
     implementation(libs.androidx.compose.foundation)
     implementation(libs.androidx.compose.material)
@@ -43,7 +44,7 @@ dependencies {
     debugImplementation(libs.androidx.savedstate)
     debugImplementation(libs.androidx.core.ktx)
 
-    testImplementation(project(":common:test-unit"))
+    testImplementation(projects.common.testUnit)
     testImplementation(libs.junit.junit)
     testImplementation(libs.cashapp.turbine)
     testImplementation(libs.expectKt)

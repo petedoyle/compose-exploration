@@ -16,9 +16,10 @@ android {
 }
 
 dependencies {
-    implementation(project(":common:coroutine-dispatchers"))
-    implementation(project(":apps:compose-commerce:api:bigcommerce-models-catalog-v3"))
-    implementation(project(":apps:compose-commerce:api:bigcommerce-models-carts-v3"))
+    implementation(projects.apps.composeCommerce.api.bigcommerceModelsCatalogV3)
+    implementation(projects.apps.composeCommerce.api.bigcommerceModelsCartsV3)
+    implementation(projects.common.coroutineDispatchers)
+
     implementation(libs.androidx.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
     kapt(libs.androidx.hilt.compiler)
