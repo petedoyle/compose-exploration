@@ -7,11 +7,11 @@ A place for ✨👨‍🔬 personal exploration 👩‍🔬✨ of best practices
 ## Repo structure
 This is a Gradle monorepo containing multiple apps (see `apps/`), mainly to allow me to amortize the cost of project setup, in a way that I can easily maintain (Gradle, design systems, etc.)
 
-To view in Android Studio, open the root `build.gradle` file.
+To view in Android Studio, open the root `build.gradle` file. Then, choose the app you want to run and hit play.
 
 ## Sample apps
-- **Compose Movie Search** - (Module: `:apps:compose-movie-search:app`) A simple single-screen app that allows you to search / filter a list of movies. A small sample showing Unidirectional Data Flow (UDF) via MVI, including tests.
 - **Compose Commerce** - (Module: `:apps:compose-commerce:app`) - An online shopping app that integrates with the [BigCommerce](https://www.bigcommerce.com) API.
+- **Compose Search** - (Module: `:apps:compose-search:app`) A simple single-screen app that allows you to search / filter a list of items. A small sample showing Unidirectional Data Flow (UDF) via MVI, including tests.
 
 ## Modules
 This is a Gradle monorepo, with many modules:
