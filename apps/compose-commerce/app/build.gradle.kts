@@ -56,6 +56,7 @@ android {
 }
 
 dependencies {
+    implementation(platform(libs.androidx.compose.bom))
     implementation(projects.apps.composeCommerce.api.bigcommerceClient)
     implementation(projects.apps.composeCommerce.api.bigcommerceModelsCartsV3)
     implementation(projects.apps.composeCommerce.api.bigcommerceModelsCatalogV3)

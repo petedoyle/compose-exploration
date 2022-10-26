@@ -13,6 +13,7 @@ android {
 }
 
 dependencies {
+    implementation(platform(libs.androidx.compose.bom))
     implementation(projects.common.coroutineDispatchers)
 
     implementation(libs.androidx.arch.core)
