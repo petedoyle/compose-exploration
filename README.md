@@ -9,9 +9,11 @@ This is a Gradle monorepo containing multiple apps (see [apps/](apps)) and commo
 
 To view in Android Studio, open the root `build.gradle` file. Then, choose the app you want to run and hit play.
 
-## Sample apps
-- **Compose Commerce** - (Module: `:apps:compose-commerce:app`) - An online shopping app that integrates with the [BigCommerce](https://www.bigcommerce.com) API.
-- **Compose Search** - (Module: `:apps:compose-search:app`) A simple single-screen app that allows you to search / filter a list of items. A small sample showing Unidirectional Data Flow (UDF) via MVI, including tests.
+## Apps
+| App  |                                                                                            |
+|:-----|--------------------------------------------------------------------------------------------|
+| <br>**Compose Commerce**<br><br> An online shopping app that integrates with the [BigCommerce](https://www.bigcommerce.com) API. <br><br> **[> Browse](apps/compose-commerce/)**<br><br> | <img src="utils/art/readme/compose-commerce.gif" alt="Compose Commerce" width="240"></img> |
+| <br>**Compose Search**<br><br>A simple single-screen app that allows you to search / filter a list of items. A small sample showing Unidirectional Data Flow (UDF) via MVI, including tests.<br><br>**[> Browse](apps/compose-search)** <br><br> | <img src="utils/art/readme/compose-search.gif" alt="Compose Search" width="240"></img>     |
 
 ## Modules
 This is a Gradle monorepo, with many modules:
