@@ -5,7 +5,7 @@ A place for ✨👨‍🔬 personal exploration 👩‍🔬✨ of best practices
 
 
 ## Repo structure
-This is a Gradle monorepo containing multiple apps (see `apps/`), mainly to allow me to amortize the cost of project setup, in a way that I can easily maintain (Gradle, design systems, etc.)
+This is a Gradle monorepo containing multiple apps (see `apps/`) and common modules shared between them (see `common/`), mainly to allow me to amortize the cost of project setup, in a way that I can easily maintain (Gradle, design system, test infra, CI, etc.)
 
 To view in Android Studio, open the root `build.gradle` file. Then, choose the app you want to run and hit play.
 
