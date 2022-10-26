@@ -4,7 +4,7 @@
 A place for ✨👨‍🔬 personal exploration 👩‍🔬✨ of best practices for Compose, design systems, testing, modularization, linting & enforcement of best practices, Gradle config, build speeds, CI, etc.
 
 
-# Repo structure
+## Repo structure
 This is a Gradle monorepo containing multiple apps (see `apps/`), mainly to allow me to amortize the cost of project setup, in a way that I can easily maintain (Gradle, design systems, etc.)
 
 To view in Android Studio, open the root `build.gradle` file.
