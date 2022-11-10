@@ -15,7 +15,6 @@
  */
 package dev.petedoyle.commerce.ui.home
 
-import android.content.res.Configuration
 import android.widget.Toast
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
@@ -38,7 +37,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.navigation.NavHostController
 import com.google.accompanist.insets.ui.Scaffold
@@ -49,6 +47,7 @@ import dev.petedoyle.commerce.common.api.bigcommerce.catalog.v3.model.ProductIma
 import dev.petedoyle.commerce.ui.Screen
 import dev.petedoyle.commerce.ui.components.CommerceTopAppBarPrimary
 import dev.petedoyle.commerce.ui.home.components.FeaturedProduct
+import dev.petedoyle.common.design.compose.preview.DeviceLightDarkPreviews
 import dev.petedoyle.common.design.compose.theme.FractalTheme
 
 private const val GRID_ROWS_COUNT = 2
@@ -138,8 +137,7 @@ fun HomeScreen(
     }
 }
 
-@Preview(name = "Light", uiMode = Configuration.UI_MODE_NIGHT_NO)
-@Preview(name = "Dark", uiMode = Configuration.UI_MODE_NIGHT_YES)
+@DeviceLightDarkPreviews
 @Composable
 fun PreviewHomeScreen() {
     FractalTheme {
