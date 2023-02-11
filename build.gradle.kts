@@ -19,8 +19,8 @@ buildscript {
 }
 
 plugins {
-    alias(libs.plugins.detekt) apply false
-    alias(libs.plugins.spotless) apply false
+    alias(libs.plugins.detekt)
+    alias(libs.plugins.spotless)
 }
 
 apply(from = "gradle/projectDependencyGraph.gradle")
@@ -100,67 +100,75 @@ allprojects {
     }
 
     // Detekt
-    apply(plugin = "io.gitlab.arturbosch.detekt")
-    configure<DetektExtension> {
-        toolVersion = detektVersion
-        allRules = true
-    }
-
-    tasks.withType<Detekt>().configureEach {
-        reports {
-            html.required.set(true)
-            xml.required.set(true)
-            txt.required.set(true)
+    pluginManager.withPlugin("io.gitlab.arturbosch.detekt") {
+        configure<DetektExtension> {
+            toolVersion = libs.versions.detekt.get()
+            allRules = true
         }
-        jvmTarget = "11"
-        excludes.add("**/v3/model/**/*.kt") // exclude generated bigcommerce models
-        config.setFrom(files(rootProject.file("detekt.yml")))
+
+        tasks.withType<Detekt>().configureEach {
+            reports {
+                html.required.set(true)
+                xml.required.set(true)
+                txt.required.set(true)
+            }
+            jvmTarget = "11"
+            excludes.add("**/v3/model/**/*.kt") // exclude generated bigcommerce models
+            config.setFrom(files(rootProject.file("detekt.yml")))
+        }
     }
 
     // Spotless
-    apply(plugin = "com.diffplug.spotless")
-    configure<SpotlessExtension> {
-        format("misc") {
-            target("*.md", ".gitignore")
-            trimTrailingWhitespace()
-            endWithNewline()
+    // https://github.com/diffplug/spotless/tree/main/plugin-gradle#dependency-resolution-modes
+    // https://github.com/diffplug/spotless/issues/1213
+    pluginManager.withPlugin("com.diffplug.spotless") {
+        val spotlessFormatters: SpotlessExtension.() -> Unit = {
+            format("misc") {
+                target("*.md", ".gitignore")
+                trimTrailingWhitespace()
+                endWithNewline()
+            }
+
+            kotlin {
+                target("src/**/*.kt")
+                targetExclude(
+                    "**/copyright.kt",
+                    "**/v3/model/**/*.kt", // exclude generated bigcommerce models
+                )
+                ktlint(libs.versions.ktlint.get())
+                    .editorConfigOverride(
+                        mapOf(
+                            "disabled_rules" to "filename",
+                            "ij_kotlin_allow_trailing_comma" to "true",
+                            "ij_kotlin_allow_trailing_comma_on_call_site" to "true",
+                        ),
+                    )
+                trimTrailingWhitespace()
+                endWithNewline()
+                licenseHeaderFile(rootProject.file("spotless/copyright.kt"), "package ")
+            }
+
+            kotlinGradle {
+                target("src/**/*.kts")
+                ktlint(libs.versions.ktlint.get())
+                    .editorConfigOverride(
+                        mapOf(
+                            "disabled_rules" to "filename",
+                            "ij_kotlin_allow_trailing_comma" to "true",
+                            "ij_kotlin_allow_trailing_comma_on_call_site" to "true",
+                        ),
+                    )
+                trimTrailingWhitespace()
+                endWithNewline()
+                licenseHeaderFile(
+                    rootProject.file("spotless/copyright.kt"),
+                    "(import|plugins|buildscript|dependencies|pluginManagement)",
+                )
+            }
         }
 
-        kotlin {
-            target("src/**/*.kt")
-            targetExclude(
-                "**/copyright.kt",
-                "**/v3/model/**/*.kt", // exclude generated bigcommerce models
-            )
-            ktlint(libs.versions.ktlint.get())
-                .editorConfigOverride(
-                    mapOf(
-                        "disabled_rules" to "filename",
-                        "ij_kotlin_allow_trailing_comma" to "true",
-                        "ij_kotlin_allow_trailing_comma_on_call_site" to "true",
-                    ),
-                )
-            trimTrailingWhitespace()
-            endWithNewline()
-            licenseHeaderFile(rootProject.file("spotless/copyright.kt"), "package ")
-        }
-
-        kotlinGradle {
-            target("src/**/*.kts")
-            ktlint(libs.versions.ktlint.get())
-                .editorConfigOverride(
-                    mapOf(
-                        "disabled_rules" to "filename",
-                        "ij_kotlin_allow_trailing_comma" to "true",
-                        "ij_kotlin_allow_trailing_comma_on_call_site" to "true",
-                    ),
-                )
-            trimTrailingWhitespace()
-            endWithNewline()
-            licenseHeaderFile(
-                rootProject.file("spotless/copyright.kt"),
-                "(import|plugins|buildscript|dependencies|pluginManagement)",
-            )
+        configure<SpotlessExtension> {
+            spotlessFormatters()
         }
     }
 }
