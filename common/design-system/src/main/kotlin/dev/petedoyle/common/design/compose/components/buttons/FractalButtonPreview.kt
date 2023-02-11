@@ -38,7 +38,8 @@ import dev.petedoyle.common.design.compose.theme.FractalTheme
 )
 @Composable
 private fun Preview(
-    @PreviewParameter(FractalButtonStyleVariantProvider::class) styleVariant: FractalButtonStyleVariant,
+    @PreviewParameter(FractalButtonStyleVariantProvider::class)
+    styleVariant: FractalButtonStyleVariant,
 ) {
     FractalTheme {
         FractalButtonGallery(styleVariant)
@@ -62,8 +63,10 @@ private fun FractalButtonGallery(styleVariant: FractalButtonStyleVariant) {
                 verticalArrangement = Arrangement.spacedBy(FractalTheme.spacing.xs),
                 modifier = Modifier.padding(FractalTheme.spacing.m),
             ) {
+                val styleVariantName = styleVariant.javaClass.simpleName
+                val sizeVariantName = sizeVariant.javaClass.simpleName
                 Text(
-                    text = "${styleVariant.javaClass.simpleName} / ${sizeVariant.javaClass.simpleName}:",
+                    text = "$styleVariantName / $sizeVariantName:",
                     color = FractalTheme.colors.onBackground,
                     style = FractalTheme.typography.heading3,
                 )

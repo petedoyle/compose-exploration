@@ -29,8 +29,8 @@ import dev.petedoyle.commerce.ui.MainViewModelEffects.AppUpdateCheckFailedEffect
 import dev.petedoyle.commerce.ui.MainViewModelEffects.AppUpdateNotAvailableEffect
 import dev.petedoyle.common.coroutines.DispatcherProvider
 import dev.petedoyle.common.mvi.ViewModelBase
-import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
@@ -63,9 +63,9 @@ class MainViewModel @Inject constructor(
         appUpdateManager.appUpdateInfo.apply {
             addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    val appUpdateInfo: AppUpdateInfo = task.result
-                    when (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE) {
-                        true -> emitEffect(AppUpdateAvailableEffect(appUpdateInfo))
+                    val info: AppUpdateInfo = task.result
+                    when (info.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE) {
+                        true -> emitEffect(AppUpdateAvailableEffect(info))
                         else -> emitEffect(AppUpdateNotAvailableEffect)
                     }
                 } else {

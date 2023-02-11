@@ -73,7 +73,9 @@ private fun MainScreenContent(
 
     LaunchedEffect(key1 = uiState.focusedMovie) {
         if (uiState.focusedMovie != null) {
-            snackbarHostState.showSnackbar("${uiState.focusedMovie.title} was released in ${uiState.focusedMovie.year}")
+            snackbarHostState.showSnackbar(
+                "${uiState.focusedMovie.title} was released in ${uiState.focusedMovie.year}",
+            )
             actionHandler(MainScreenActions.MovieBlurred)
         }
     }

@@ -156,7 +156,11 @@ private fun Preview() {
                     price = 89.00f,
                     images = listOf(
                         ProductImageFull(
-                            urlThumbnail = "https://cdn11.bigcommerce.com/s-c22nuunnpp/products/81/images/274/roundterrariumsmall2.1652641773.220.290.jpg?c=1",
+                            urlThumbnail = buildString {
+                                append("https://cdn11.bigcommerce.com")
+                                append("/s-c22nuunnpp/products/81/images/274")
+                                append("/roundterrariumsmall2.1652641773.220.290.jpg?c=1")
+                            },
                         ),
                     ),
                 ),

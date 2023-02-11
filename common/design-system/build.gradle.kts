@@ -32,7 +32,7 @@ dependencies {
 
     // Transitive deps needed for libs.androidx.compose.ui.tooling
     // Not sure why they don't get pulled in automatically
-    debugImplementation(libs.androidx.lifecycle.viewmodel.ktx)
+    debugImplementation(libs.androidx.lifecycle.viewmodel)
     debugImplementation(libs.androidx.savedstate)
     debugImplementation(libs.androidx.core.ktx)
 

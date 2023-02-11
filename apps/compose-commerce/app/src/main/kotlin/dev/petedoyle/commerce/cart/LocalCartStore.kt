@@ -16,8 +16,8 @@
 package dev.petedoyle.commerce.cart
 
 import dev.petedoyle.common.flux.BaseStore
-import kotlinx.coroutines.delay
 import kotlin.random.Random
+import kotlinx.coroutines.delay
 
 class LocalCartStore : CartStore, BaseStore<CartState, CartStoreActions>(CartState()) {
 
@@ -35,7 +35,8 @@ class LocalCartStore : CartStore, BaseStore<CartState, CartStoreActions>(CartSta
     private fun addLineItem(cartState: CartState, action: AddLineItem): CartState {
         // Check for an existing item with this exact product and variant
         val index = cartState.items.indexOfFirst { lineItem ->
-            lineItem.product.id == action.item.product.id && lineItem.variant.id == action.item.variant.id
+            lineItem.product.id == action.item.product.id &&
+                lineItem.variant.id == action.item.variant.id
         }
 
         // If a line item for this exact product and variant exists, increase its quantity by one
@@ -67,6 +68,7 @@ class LocalCartStore : CartStore, BaseStore<CartState, CartStoreActions>(CartSta
                     set(index, action.item.copy(quantity = action.newQuantity))
                 }.toList(),
             )
+
             else -> cartState
         }
     }

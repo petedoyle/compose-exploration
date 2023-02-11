@@ -97,9 +97,15 @@ fun ProductDetailScreen(
                     navController.popBackStack()
                     navController.navigate(Screen.Cart.route)
                 }
+
                 is LaunchCheckoutEffect -> {
                 }
-                NetworkError -> Toast.makeText(context, "Network Error", Toast.LENGTH_SHORT).show()
+
+                NetworkError -> Toast.makeText(
+                    context,
+                    "Network Error",
+                    Toast.LENGTH_SHORT,
+                ).show()
             }
         }
     }
@@ -235,9 +241,15 @@ fun ProductDetailScreen(
                         ),
                 )
 
-                val inStock = product?.inventoryTracking?.value == BC_INVENTORY_TRACKING_NONE ||
-                    (product?.inventoryTracking?.value == BC_INVENTORY_TRACKING_PRODUCT && product.inventoryLevel ?: 0 > 0) ||
-                    variants.any { it.inventoryLevel ?: 0 > 0 }
+                val inventoryTracking = product?.inventoryTracking?.value
+                val inventoryTrackingDisabled = inventoryTracking == BC_INVENTORY_TRACKING_NONE
+                val inventoryTrackingAtProductLevel =
+                    inventoryTracking == BC_INVENTORY_TRACKING_PRODUCT
+                val inStockAtVariantLevel = variants.any { (it.inventoryLevel ?: 0) > 0 }
+
+                val inStock = inventoryTrackingDisabled ||
+                    (inventoryTrackingAtProductLevel && (product?.inventoryLevel ?: 0) > 0) ||
+                    inStockAtVariantLevel
 
                 if (!inStock) {
                     OutOfStockBanner()
@@ -307,7 +319,11 @@ fun PreviewProductDetailScreen() {
                     price = 225.00f,
                     images = listOf(
                         ProductImageFull(
-                            urlThumbnail = "https://cdn11.bigcommerce.com/s-c22nuunnpp/products/86/images/283/ablebrewingsystem1.1652641773.220.290.jpg?c=1",
+                            urlThumbnail = buildString {
+                                append("https://cdn11.bigcommerce.com")
+                                append("/s-c22nuunnpp/products/86/images/283")
+                                append("/ablebrewingsystem1.1652641773.220.290.jpg?c=1")
+                            },
                         ),
                     ),
                     categories = listOf(0, 1, 2),

@@ -55,7 +55,7 @@ openapi-generator = "6.3.0"
 play-core = "1.10.3"
 play-core-ktx = "1.8.1"
 retrofit = "2.9.0"
-spotless = "6.11.0"
+spotless = "6.15.0"
 turbine = "0.12.1"
 
 [libraries]
@@ -85,7 +85,7 @@ androidx-hilt-android = { module = "com.google.dagger:hilt-android", version.ref
 androidx-hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "dagger" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "androidx-hilt-navigation-compose" }
 androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidx-lifecycle" }
-androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "androidx-navigation" }
 androidx-savedstate = { module = "androidx.savedstate:savedstate", version.ref = "androidx-savedstate" }
 androidx-test-core = { module = "androidx.test:core", version.ref = "androidx-test-core" }

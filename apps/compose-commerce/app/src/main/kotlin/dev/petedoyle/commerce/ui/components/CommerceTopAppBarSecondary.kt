@@ -49,8 +49,12 @@ fun CommerceTopAppBarSecondary(
         navigationIcon = {
             IconButton(onClick = { onBackClicked() }) {
                 Icon(
-                    painter = painterResource(id = dev.petedoyle.commerce.design.compose.R.drawable.ico_chevronleft_24),
-                    contentDescription = stringResource(R.string.icon_shopping_cart_content_description),
+                    painter = painterResource(
+                        id = dev.petedoyle.commerce.design.compose.R.drawable.ico_chevronleft_24,
+                    ),
+                    contentDescription = stringResource(
+                        R.string.icon_shopping_cart_content_description,
+                    ),
                     tint = FractalTheme.colors.onBackground,
                 )
             }

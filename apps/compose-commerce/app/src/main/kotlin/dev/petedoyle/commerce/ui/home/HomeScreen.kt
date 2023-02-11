@@ -74,8 +74,13 @@ fun HomeScreen(viewModel: HomeScreenViewModel, navController: NavHostController)
                 is NavigateToProductDetail -> navController.navigate(
                     Screen.ProductDetail.createRoute(effect.productId),
                 )
+
                 is NavigateToCart -> navController.navigate(Screen.Cart.route)
-                NetworkError -> Toast.makeText(context, "Network Error", Toast.LENGTH_SHORT).show()
+                NetworkError -> Toast.makeText(
+                    context,
+                    "Network Error",
+                    Toast.LENGTH_SHORT,
+                ).show()
             }
         }
     }
@@ -151,7 +156,11 @@ fun PreviewHomeScreen() {
                         price = 49.00f,
                         images = listOf(
                             ProductImageFull(
-                                urlThumbnail = "https://cdn11.bigcommerce.com/s-c22nuunnpp/products/77/images/265/foglinenbeigestripetowel3b.1652641772.220.290.jpg?c=1",
+                                urlThumbnail = buildString {
+                                    append("https://cdn11.bigcommerce.com")
+                                    append("/s-c22nuunnpp/products/77/images/265/")
+                                    append("foglinenbeigestripetowel3b.1652641772.220.290.jpg?c=1")
+                                },
                             ),
                         ),
                         categories = listOf(18, 23),
@@ -163,7 +172,11 @@ fun PreviewHomeScreen() {
                         price = 89.00f,
                         images = listOf(
                             ProductImageFull(
-                                urlThumbnail = "https://cdn11.bigcommerce.com/s-c22nuunnpp/products/81/images/273/roundterrariumsmall.1652641773.220.290.jpg?c=1",
+                                urlThumbnail = buildString {
+                                    append("https://cdn11.bigcommerce.com/")
+                                    append("s-c22nuunnpp/products/81/images/273/")
+                                    append("roundterrariumsmall.1652641773.220.290.jpg?c=1")
+                                },
                             ),
                         ),
                         categories = listOf(19, 23),
@@ -175,7 +188,11 @@ fun PreviewHomeScreen() {
                         price = 225.00f,
                         images = listOf(
                             ProductImageFull(
-                                urlThumbnail = "https://cdn11.bigcommerce.com/s-c22nuunnpp/products/86/images/283/ablebrewingsystem1.1652641773.220.290.jpg?c=1",
+                                urlThumbnail = buildString {
+                                    append("https://cdn11.bigcommerce.com")
+                                    append("/s-c22nuunnpp/products/86/images/283/")
+                                    append("ablebrewingsystem1.1652641773.220.290.jpg?c=1")
+                                },
                             ),
                         ),
                         categories = listOf(21, 23),
@@ -187,7 +204,11 @@ fun PreviewHomeScreen() {
                         price = 49.50f,
                         images = listOf(
                             ProductImageFull(
-                                urlThumbnail = "https://cdn11.bigcommerce.com/s-c22nuunnpp/products/88/images/292/3cupchemex5.1652641773.220.290.jpg?c=1",
+                                urlThumbnail = buildString {
+                                    append("https://cdn11.bigcommerce.com")
+                                    append("/s-c22nuunnpp/products/88/images/292/")
+                                    append("3cupchemex5.1652641773.220.290.jpg?c=1")
+                                },
                             ),
                         ),
                         categories = listOf(21, 23),

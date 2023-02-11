@@ -51,7 +51,11 @@ fun FractalButton(
 
     val outlineColor = styleVariant.outlineColor
     if (outlineColor != null) {
-        buttonModifier = buttonModifier.border(1.dp, outlineColor, FractalTheme.shapes.borderRounded)
+        buttonModifier = buttonModifier.border(
+            1.dp,
+            outlineColor,
+            FractalTheme.shapes.borderRounded,
+        )
     }
 
     val buttonColors = when (styleVariant.outlineColor) {

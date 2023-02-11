@@ -260,7 +260,11 @@ private fun PreviewWithLineItems() {
                                 price = 225.00f,
                                 images = listOf(
                                     ProductImageFull(
-                                        urlThumbnail = "https://cdn11.bigcommerce.com/s-c22nuunnpp/products/86/images/283/ablebrewingsystem1.1652641773.220.290.jpg?c=1",
+                                        urlThumbnail = buildString {
+                                            append("https://cdn11.bigcommerce.com")
+                                            append("/s-c22nuunnpp/products/86/images/283")
+                                            append("/ablebrewingsystem1.1652641773.220.290.jpg?c=1")
+                                        },
                                     ),
                                 ),
                                 categories = listOf(1, 2, 3),

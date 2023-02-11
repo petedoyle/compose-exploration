@@ -25,8 +25,8 @@ import dev.petedoyle.commerce.cart.UpdateLineItemQuantity
 import dev.petedoyle.common.coroutines.DispatcherProvider
 import dev.petedoyle.common.mvi.ViewModelBase
 import dev.petedoyle.common.mvi.ViewModelState
-import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 @Immutable
 data class CartScreenState(
@@ -71,7 +71,9 @@ class CartScreenViewModel @Inject constructor(
         }
     }
 
-    private fun handleQuickCheckoutClicked() = emitEffect(LaunchCheckoutEffect(cartStore.stateFlow.value))
+    private fun handleQuickCheckoutClicked() = emitEffect(
+        LaunchCheckoutEffect(cartStore.stateFlow.value),
+    )
 
     private fun handleRemoveCartLineItemClicked(action: RemoveCartLineItemClicked) {
         viewModelScope.launch(dispatcherProvider.io()) {

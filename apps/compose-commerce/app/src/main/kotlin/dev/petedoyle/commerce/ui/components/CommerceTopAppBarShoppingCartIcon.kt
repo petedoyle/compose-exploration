@@ -41,7 +41,9 @@ fun CommerceTopAppBarShoppingCartIcon(
 ) {
     Box(modifier) {
         Icon(
-            painter = painterResource(id = dev.petedoyle.commerce.design.compose.R.drawable.ico_cart_24),
+            painter = painterResource(
+                id = dev.petedoyle.commerce.design.compose.R.drawable.ico_cart_24,
+            ),
             contentDescription = stringResource(R.string.icon_shopping_cart_content_description),
             tint = FractalTheme.colors.onBackground,
         )
