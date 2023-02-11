@@ -135,8 +135,7 @@ allprojects {
                     "**/copyright.kt",
                     "**/v3/model/**/*.kt", // exclude generated bigcommerce models
                 )
-                ktlint(libs.versions.ktlint.get())
-                    .editorConfigOverride(
+                ktlint(libs.versions.ktlint.get()).editorConfigOverride(
                         mapOf(
                             "disabled_rules" to "filename",
                             "ij_kotlin_allow_trailing_comma" to "true",
@@ -150,8 +149,7 @@ allprojects {
 
             kotlinGradle {
                 target("src/**/*.kts")
-                ktlint(libs.versions.ktlint.get())
-                    .editorConfigOverride(
+                ktlint(libs.versions.ktlint.get()).editorConfigOverride(
                         mapOf(
                             "disabled_rules" to "filename",
                             "ij_kotlin_allow_trailing_comma" to "true",
