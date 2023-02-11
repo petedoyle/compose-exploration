@@ -6,8 +6,6 @@ plugins {
     alias(libs.plugins.openapi.generator)
 }
 
-apply(from = "$rootDir/gradle/defaults-android-library.gradle")
-
 android {
     buildFeatures {
         buildConfig = true
@@ -21,7 +19,6 @@ dependencies {
     implementation(projects.common.coroutineDispatchers)
 
     implementation(libs.androidx.hilt.android)
-    implementation(libs.androidx.hilt.navigation.compose)
     kapt(libs.androidx.hilt.compiler)
     implementation(libs.eithernet)
     implementation(libs.kotlinx.coroutines.core)

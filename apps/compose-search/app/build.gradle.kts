@@ -6,12 +6,8 @@ plugins {
 }
 
 android {
-    compileSdk = 33
-
     defaultConfig {
         applicationId = "dev.petedoyle.moviesearch"
-        minSdk = 21
-        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
 
@@ -29,12 +25,6 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
             )
-        }
-    }
-    compileOptions {
-        compileOptions {
-            sourceCompatibility = JavaVersion.VERSION_1_8
-            targetCompatibility = JavaVersion.VERSION_1_8
         }
     }
     kotlinOptions {

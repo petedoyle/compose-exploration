@@ -1,3 +1,6 @@
+import com.android.build.api.dsl.ApplicationExtension
+import com.android.build.api.dsl.CommonExtension
+import com.android.build.gradle.LibraryExtension
 import com.diffplug.gradle.spotless.SpotlessExtension
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
@@ -24,6 +27,78 @@ apply(from = "gradle/projectDependencyGraph.gradle")
 
 val detektVersion = libs.versions.detekt.get()
 allprojects {
+    // Common Android config for both application and library modules
+    val commonAndroidConfig: CommonExtension<*, *, *, *>.() -> Unit = {
+        compileSdk = libs.versions.android.build.compileSdk.get().toInt()
+        buildToolsVersion = libs.versions.android.build.buildToolsVersion.get()
+        defaultConfig {
+            minSdk = libs.versions.android.build.minSdk.get().toInt()
+        }
+        compileOptions {
+            sourceCompatibility = JavaVersion.VERSION_1_8
+            targetCompatibility = JavaVersion.VERSION_1_8
+        }
+        packagingOptions {
+            resources {
+                excludes += listOf(
+                    "META-INF/{AL2.0,LGPL2.1}",
+                    "META-INF/LICENSE.md",
+                    "META-INF/LICENSE-notice.md",
+                )
+            }
+        }
+    }
+    // Android config for application modules
+    pluginManager.withPlugin("com.android.application") {
+        with(extensions.getByType<ApplicationExtension>()) {
+            commonAndroidConfig()
+            defaultConfig {
+                targetSdk = libs.versions.android.build.targetSdk.get().toInt()
+            }
+        }
+    }
+
+    // Android config for library modules
+    pluginManager.withPlugin("com.android.library") {
+        with(extensions.getByType<LibraryExtension>()) {
+            commonAndroidConfig()
+            defaultConfig {
+                minSdk = libs.versions.android.build.minSdk.get().toInt()
+                targetSdk = libs.versions.android.build.targetSdk.get().toInt()
+                testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+                consumerProguardFiles.add(project.file("consumer-rules.pro"))
+                compileOptions {
+                    sourceCompatibility = JavaVersion.VERSION_1_8
+                    targetCompatibility = JavaVersion.VERSION_1_8
+                    isCoreLibraryDesugaringEnabled = true
+                }
+            }
+
+            buildTypes {
+                release {
+                    isMinifyEnabled = false
+                    proguardFiles.addAll(
+                        listOf(
+                            getDefaultProguardFile("proguard-android-optimize.txt"),
+                            project.file("proguard-rules.pro"),
+                        ),
+                    )
+                }
+            }
+
+            testOptions {
+                unitTests {
+                    isIncludeAndroidResources = true
+                    isReturnDefaultValues = true
+                }
+            }
+
+            dependencies {
+                add("coreLibraryDesugaring", libs.android.core.desugaring)
+            }
+        }
+    }
+
     // Detekt
     apply(plugin = "io.gitlab.arturbosch.detekt")
     configure<DetektExtension> {
@@ -92,7 +167,10 @@ allprojects {
 
 subprojects {
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-        kotlinOptions.freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
+        kotlinOptions {
+            jvmTarget = "1.8"
+            freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
+        }
     }
 
     // Remove kotlinx-coroutines-debug, which is x86 only. Including it causes build errors:

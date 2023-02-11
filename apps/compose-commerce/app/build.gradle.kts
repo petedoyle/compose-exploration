@@ -7,11 +7,7 @@ plugins {
 }
 
 android {
-    compileSdk = 33
-
     defaultConfig {
-        minSdk = 21
-        targetSdk = 33
         versionCode = 1
         versionName = "1.0 ($versionCode)"
         applicationId = "dev.petedoyle.commerce"
@@ -32,11 +28,6 @@ android {
         }
     }
 
-    compileOptions {
-        isCoreLibraryDesugaringEnabled = true
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -47,11 +38,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.androidx.compose.compiler.get()
     }
-    packagingOptions {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
+
     namespace = "dev.petedoyle.commerce"
 }
 
@@ -78,7 +65,9 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.hilt.android)
-    implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.androidx.hilt.navigation.compose) {
+        exclude(group = "androidx.lifecycle", module = "lifecycle-viewmodel-ktx")
+    }
     kapt(libs.androidx.hilt.compiler)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.navigation.compose)
