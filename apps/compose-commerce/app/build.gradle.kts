@@ -28,9 +28,6 @@ android {
         }
     }
 
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
     buildFeatures {
         buildConfig = true
         compose = true
@@ -77,9 +74,6 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.play.core)
     implementation(libs.play.core.ktx)
-
-    // Desugaring
-    coreLibraryDesugaring(libs.android.core.desugaring)
 
     debugImplementation(libs.androidx.compose.ui.tooling)
 

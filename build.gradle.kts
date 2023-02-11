@@ -2,6 +2,7 @@ import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.dsl.CommonExtension
 import com.android.build.gradle.LibraryExtension
 import com.diffplug.gradle.spotless.SpotlessExtension
+import com.diffplug.gradle.spotless.SpotlessExtensionPredeclare
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 
@@ -25,18 +26,33 @@ plugins {
 
 apply(from = "gradle/projectDependencyGraph.gradle")
 
-val detektVersion = libs.versions.detekt.get()
 allprojects {
+    // Java
+    pluginManager.withPlugin("java") {
+        configure<JavaPluginExtension> {
+            toolchain {
+                languageVersion.set(
+                    JavaLanguageVersion.of(libs.versions.android.build.jdk.get().toInt()),
+                )
+            }
+        }
+
+        tasks.withType<JavaCompile>().configureEach {
+            options.release.set(libs.versions.android.build.jdk.get().toInt())
+        }
+    }
+
     // Common Android config for both application and library modules
     val commonAndroidConfig: CommonExtension<*, *, *, *>.() -> Unit = {
         compileSdk = libs.versions.android.build.compileSdk.get().toInt()
         buildToolsVersion = libs.versions.android.build.buildToolsVersion.get()
         defaultConfig {
             minSdk = libs.versions.android.build.minSdk.get().toInt()
-        }
-        compileOptions {
-            sourceCompatibility = JavaVersion.VERSION_1_8
-            targetCompatibility = JavaVersion.VERSION_1_8
+
+            compileOptions {
+                sourceCompatibility = JavaVersion.VERSION_11
+                targetCompatibility = JavaVersion.VERSION_11
+            }
         }
         packagingOptions {
             resources {
@@ -64,12 +80,9 @@ allprojects {
             commonAndroidConfig()
             defaultConfig {
                 minSdk = libs.versions.android.build.minSdk.get().toInt()
-                targetSdk = libs.versions.android.build.targetSdk.get().toInt()
                 testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
                 consumerProguardFiles.add(project.file("consumer-rules.pro"))
                 compileOptions {
-                    sourceCompatibility = JavaVersion.VERSION_1_8
-                    targetCompatibility = JavaVersion.VERSION_1_8
                     isCoreLibraryDesugaringEnabled = true
                 }
             }
@@ -167,6 +180,16 @@ allprojects {
 
         configure<SpotlessExtension> {
             spotlessFormatters()
+
+            // https://github.com/diffplug/spotless/tree/main/plugin-gradle#dependency-resolution-modes
+            // https://github.com/diffplug/spotless/issues/1213
+            if (project.rootProject == project) {
+                predeclareDeps()
+            }
+
+            if (project.rootProject == project) {
+                configure<SpotlessExtensionPredeclare> { spotlessFormatters() }
+            }
         }
     }
 }
@@ -174,7 +197,7 @@ allprojects {
 subprojects {
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
         kotlinOptions {
-            jvmTarget = "1.8"
+            jvmTarget = libs.versions.android.build.jdk.get()
             freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
         }
     }

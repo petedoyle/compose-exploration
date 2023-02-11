@@ -92,7 +92,7 @@ fun FractalButton(
                 horizontalArrangement = Arrangement.Center,
                 modifier = Modifier.alpha(if (loading) 0f else 1f),
             ) {
-                if (iconRes > 0) {
+                if (iconRes != 0) {
                     Icon(
                         painter = painterResource(id = iconRes),
                         contentDescription = null,
