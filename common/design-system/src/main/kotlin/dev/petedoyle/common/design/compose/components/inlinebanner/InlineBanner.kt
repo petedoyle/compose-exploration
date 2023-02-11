@@ -95,7 +95,9 @@ fun InlineBanner(
 @Preview(name = "Light", uiMode = Configuration.UI_MODE_NIGHT_NO)
 @Preview(name = "Dark", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-private fun Preview(@PreviewParameter(InlineBannerVariantProvider::class) variant: InlineBannerVariant) {
+private fun Preview(
+    @PreviewParameter(InlineBannerVariantProvider::class) variant: InlineBannerVariant,
+) {
     FractalTheme {
         InlineBanner(
             text = "Banner message goes here.",

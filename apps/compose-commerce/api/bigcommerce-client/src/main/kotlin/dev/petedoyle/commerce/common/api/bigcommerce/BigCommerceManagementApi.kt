@@ -59,5 +59,7 @@ interface BigCommerceManagementApi {
     ): ApiResult<ModifierCollectionResponse, ErrorBase>
 
     @GET("v3/catalog/categories")
-    suspend fun listCategories(@Query("limit") limit: Int = 100): ApiResult<CategoryCollectionResponse, ErrorBase>
+    suspend fun listCategories(
+        @Query("limit") limit: Int = 100,
+    ): ApiResult<CategoryCollectionResponse, ErrorBase>
 }

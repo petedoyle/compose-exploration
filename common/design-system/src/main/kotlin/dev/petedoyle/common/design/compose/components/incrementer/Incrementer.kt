@@ -75,12 +75,13 @@ fun Incrementer(
             Icon(
                 painter = painterResource(id = R.drawable.ico_minus_16),
                 contentDescription = stringResource(R.string.decrement, quantity - 1),
-                tint = animateColorAsState(if (minusEnabled) iconEnabledColor else iconDisabledColor).value,
-                modifier = Modifier
-                    .drawBehind {
-                        val color = if (minusEnabled) buttonEnabledColor else buttonDisabledColor
-                        drawCircle(color, radius = buttonRadius.toPx())
-                    },
+                tint = animateColorAsState(
+                    if (minusEnabled) iconEnabledColor else iconDisabledColor,
+                ).value,
+                modifier = Modifier.drawBehind {
+                    val color = if (minusEnabled) buttonEnabledColor else buttonDisabledColor
+                    drawCircle(color, radius = buttonRadius.toPx())
+                },
             )
         }
         Text(
@@ -99,13 +100,14 @@ fun Incrementer(
                 }
             },
             enabled = plusEnabled,
-            modifier = Modifier
-                .size(INCREMENTER_BUTTON_SIZE),
+            modifier = Modifier.size(INCREMENTER_BUTTON_SIZE),
         ) {
             Icon(
                 painter = painterResource(id = R.drawable.ico_plus_16),
                 contentDescription = stringResource(R.string.increment, quantity + 1),
-                tint = animateColorAsState(if (plusEnabled) iconEnabledColor else iconDisabledColor).value,
+                tint = animateColorAsState(
+                    if (plusEnabled) iconEnabledColor else iconDisabledColor,
+                ).value,
                 modifier = Modifier.drawBehind {
                     val color = if (plusEnabled) buttonEnabledColor else buttonDisabledColor
                     drawCircle(color, radius = buttonRadius.toPx())

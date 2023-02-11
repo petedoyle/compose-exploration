@@ -25,7 +25,9 @@ import androidx.compose.ui.graphics.Color
 // GENERATED. Do not edit by hand.
 // /////////////////////////////////////////////////////////////////////////
 
-val LocalFractalPrimitiveColors = staticCompositionLocalOf<FractalPrimitiveColors> { FractalLightPrimitiveColors() }
+val LocalFractalPrimitiveColors = staticCompositionLocalOf<FractalPrimitiveColors> {
+    FractalLightPrimitiveColors()
+}
 
 @Stable
 interface FractalPrimitiveColors {

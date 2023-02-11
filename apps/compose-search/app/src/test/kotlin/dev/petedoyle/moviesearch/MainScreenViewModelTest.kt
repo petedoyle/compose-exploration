@@ -39,7 +39,8 @@ class MainScreenViewModelTest : TestBase() {
         viewModel.setState { copy(query = "") }
 
         // When
-        advanceTimeBy(MainScreenViewModel.QUERY_DEBOUNCE_MILLIS + 1) // required since we debounce before querying
+        // Required since we debounce before querying
+        advanceTimeBy(MainScreenViewModel.QUERY_DEBOUNCE_MILLIS + 1)
 
         // Then
         viewModel.stateFlow.test {
@@ -53,7 +54,8 @@ class MainScreenViewModelTest : TestBase() {
         viewModel.setState { copy(query = "star") }
 
         // When
-        advanceTimeBy(MainScreenViewModel.QUERY_DEBOUNCE_MILLIS + 1) // required since we debounce before querying
+        // Required since we debounce before querying
+        advanceTimeBy(MainScreenViewModel.QUERY_DEBOUNCE_MILLIS + 1)
 
         // Then
         viewModel.stateFlow.test {
@@ -72,7 +74,7 @@ class MainScreenViewModelTest : TestBase() {
     fun `Query should be cleared when clear button clicked`() = runTest {
         // Given
         viewModel.setState { copy(query = "star") }
-        advanceTimeBy(MainScreenViewModel.QUERY_DEBOUNCE_MILLIS) // required since we debounce before querying
+        advanceTimeBy(MainScreenViewModel.QUERY_DEBOUNCE_MILLIS) // required since we debounce
 
         // When
         viewModel.onAction(MainScreenActions.QueryCleared)
@@ -96,7 +98,9 @@ class MainScreenViewModelTest : TestBase() {
     @Test
     fun `Focusing on a movie should clear state`() = runTest {
         // Given
-        viewModel.setState { copy(focusedMovie = Movie("Ace Ventura: Pet Detective", "1994")) }
+        viewModel.setState {
+            copy(focusedMovie = Movie("Ace Ventura: Pet Detective", "1994"))
+        }
 
         // When
         viewModel.onAction(MainScreenActions.MovieBlurred)

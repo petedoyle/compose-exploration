@@ -30,12 +30,12 @@ import dagger.hilt.components.SingletonComponent
 import dev.petedoyle.commerce.common.api.moshi.BigDecimalAdapter
 import dev.petedoyle.commerce.common.api.moshi.LocalDateAdapter
 import dev.petedoyle.commerce.common.api.moshi.OffsetDateTimeAdapter
+import javax.inject.Named
+import javax.inject.Singleton
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import javax.inject.Named
-import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -82,7 +82,10 @@ abstract class BigCommerceManagementApiModule {
                     it.proceed(
                         it.request()
                             .newBuilder()
-                            .addHeader("X-Auth-Token", resources.getString(R.string.bigcommerce_access_token))
+                            .addHeader(
+                                "X-Auth-Token",
+                                resources.getString(R.string.bigcommerce_access_token),
+                            )
                             .build(),
                     )
                 }
@@ -107,7 +110,8 @@ abstract class BigCommerceManagementApiModule {
 
         @Provides
         @Singleton
-        fun provideBigCommerceManagementApi(@Named(MODULE_NAME) retrofit: Retrofit): BigCommerceManagementApi =
-            retrofit.create(BigCommerceManagementApi::class.java)
+        fun provideBigCommerceManagementApi(
+            @Named(MODULE_NAME) retrofit: Retrofit,
+        ): BigCommerceManagementApi = retrofit.create(BigCommerceManagementApi::class.java)
     }
 }

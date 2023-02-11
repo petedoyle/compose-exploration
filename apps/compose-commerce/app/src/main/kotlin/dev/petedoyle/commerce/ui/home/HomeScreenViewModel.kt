@@ -32,10 +32,10 @@ import dev.petedoyle.commerce.common.api.bigcommerce.catalog.v3.model.ProductFul
 import dev.petedoyle.common.coroutines.DispatcherProvider
 import dev.petedoyle.common.mvi.ViewModelBase
 import dev.petedoyle.common.mvi.ViewModelState
+import javax.inject.Inject
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @Immutable
 data class HomeScreenState(

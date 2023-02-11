@@ -108,7 +108,10 @@ fun ProductOptionsSelector(
                             val optionId = option.id
                             val optionValueId = selectionOptionValueId.id
 
-                            if (optionSortOrder != null && optionId != null && optionValueId != null) {
+                            if (optionSortOrder != null &&
+                                optionId != null &&
+                                optionValueId != null
+                            ) {
                                 state.choices[optionSortOrder] = OptionChoice(
                                     optionId = optionId,
                                     optionValueId = optionValueId,
