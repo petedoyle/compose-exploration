@@ -5,8 +5,6 @@ plugins {
     alias(libs.plugins.ksp)
 }
 
-apply(from = "$rootDir/gradle/defaults-android-library.gradle")
-
 android {
     buildFeatures {
         // none required
