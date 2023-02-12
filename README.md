@@ -1,4 +1,5 @@
-[![Figma Design System](https://img.shields.io/badge/Figma-Design-pink.svg?style=for-the-badge&logo=figma)](https://www.figma.com/file/iJbFMd9ZzU2U9iQZ0nk72t/Fractal-Foundations)
+[![Figma Design System](https://img.shields.io/badge/Figma-Design%20System-10A171.svg?style=for-the-badge-small&logo=figma)](https://www.figma.com/file/iJbFMd9ZzU2U9iQZ0nk72t/Fractal-Foundations)&nbsp;
+![CI status](https://github.com/petedoyle/compose-exploration/actions/workflows/ci.yml/badge.svg)&nbsp;
 
 # About
 A place for ✨👨‍🔬 personal exploration 👩‍🔬✨ of best practices for Compose, design systems, testing, modularization, linting & enforcement of best practices, Gradle config, build speeds, CI, etc.
