@@ -1,7 +1,6 @@
 plugins {
     id("com.android.library")
     id("kotlin-android")
-    id("kotlin-kapt")
     alias(libs.plugins.openapi.generator)
     alias(libs.plugins.ksp)
 }

@@ -3,6 +3,7 @@ import com.android.build.api.dsl.CommonExtension
 import com.android.build.gradle.LibraryExtension
 import com.diffplug.gradle.spotless.SpotlessExtension
 import com.diffplug.gradle.spotless.SpotlessExtensionPredeclare
+import com.diffplug.spotless.LineEnding
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 
@@ -54,7 +55,7 @@ allprojects {
                 targetCompatibility = JavaVersion.VERSION_11
             }
         }
-        packagingOptions {
+        packaging {
             resources {
                 excludes += listOf(
                     "META-INF/{AL2.0,LGPL2.1}",
@@ -180,6 +181,9 @@ allprojects {
 
         configure<SpotlessExtension> {
             spotlessFormatters()
+
+            // Workaround for Gradle 8.1 configuration cache: https://github.com/diffplug/spotless/issues/1644
+            lineEndings = LineEnding.PLATFORM_NATIVE
 
             // https://github.com/diffplug/spotless/tree/main/plugin-gradle#dependency-resolution-modes
             // https://github.com/diffplug/spotless/issues/1213
