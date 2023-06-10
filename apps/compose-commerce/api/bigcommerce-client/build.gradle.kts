@@ -3,6 +3,7 @@ plugins {
     id("kotlin-android")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
+    alias(libs.plugins.ksp)
     alias(libs.plugins.openapi.generator)
 }
 
@@ -24,7 +25,7 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.moshi.kotlin)
     implementation(libs.okhttp.logging)
-    kapt(libs.moshi.kotlin.codegen)
+    ksp(libs.moshi.kotlin.codegen)
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.moshi)
 

@@ -18,7 +18,7 @@ enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 plugins {
-  id("de.fayard.refreshVersions") version "0.50.0"
+  id("de.fayard.refreshVersions") version "0.51.0"
 }
 
 rootProject.name = "Exploration"

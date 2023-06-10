@@ -34,6 +34,7 @@ import dev.petedoyle.commerce.ui.MainViewModelEffects.AppUpdateCheckFailedEffect
 import dev.petedoyle.commerce.ui.MainViewModelEffects.AppUpdateNotAvailableEffect
 import dev.petedoyle.common.design.compose.theme.FractalTheme
 import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -47,7 +48,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         // Subscribe to effects
-        lifecycleScope.launchWhenResumed {
+        lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.effectFlow.collect { effect ->
                     onViewModelEffect(effect)
